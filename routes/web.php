@@ -44,8 +44,10 @@ Route::post('/petugas/insert', [PetugasController::class, 'insert']);
 
 Route::post('/warga/update/{id_warga}', [WargaController::class, 'update']);
 Route::post('/petugas/update/{id}', [PetugasController::class, 'update']);
+Route::post('/penilaian/update/{id_nilai}', [PenilaianController::class, 'update']);
 
 Route::get('/warga/delete/{id_warga}', [WargaController::class, 'delete']);
 Route::get('/petugas/delete/{id}', [PetugasController::class, 'delete']);
+Route::get('/penilaian/delete/{id_nilai}', [PenilaianController::class, 'delete']);
 
 require __DIR__ . '/auth.php';

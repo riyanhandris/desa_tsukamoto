@@ -13,6 +13,7 @@
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>
                   <tr>
+                      <th>No.</th>
                       <th>NIK</th>
                       <th>Nama</th>
                       <th>Jenis Kelamin</th>
@@ -20,20 +21,23 @@
                       <th>RT</th>
                       <th>RW</th>
                       <th>BLT</th>
+                      <th>Hasil z</th>
                   </tr>
               </thead>
               <tbody>
-                
+                @foreach ($data as $var )
                   <tr>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
-                      <td></td>
+                      <td>{{ $loop->iteration }}</td>
+                      <td>{{ $var->nik }}</td>
+                      <td>{{ $var->nama }}</td>
+                      <td>{{ $var->jk }}</td>
+                      <td>{{ $var->dusun }}</td>
+                      <td>{{ $var->rt }}</td>
+                      <td>{{ $var->rw }}</td>
+                      <td>{{ $var->blt }}</td>
+                      <td>{{ $var->hasil_z }}</td>
                   </tr>
-                
+                  @endforeach
               </tbody>
           </table>
       </div>

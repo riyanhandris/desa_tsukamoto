@@ -19,4 +19,18 @@ class PenilaianModel extends Model
     {
         DB::table('nilai')->insert($data);
     }
+
+    public function editData($id_nilai, $data)
+    {
+        DB::table('nilai')
+            ->where('id_nilai', $id_nilai)
+            ->update($data);
+    }
+
+    public function deleteData($id_nilai)
+    {
+        DB::table('nilai')
+            ->where('id_nilai', $id_nilai)
+            ->delete();
+    }
 }

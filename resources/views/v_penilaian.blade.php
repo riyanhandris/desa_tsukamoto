@@ -2,7 +2,6 @@
 
 
 @section('content')
-<h1>Penilaian</h1>
 
 @if (session('pesan'))
 <div class="alert alert-info alert-dismissible">
@@ -13,58 +12,10 @@
     
 @endif
 
-<div class="container">
-    <form action="/penilaian/insert" method="POST">
-        @csrf
-        <div class="mb-3">
-          <label class="form-label">Nomor Induk Keluarga</label>
-          <input type="number" name="nik" class="form-control" value="{{ old('nik') }}">
-          <div class="text-danger">
-            @error('nik')
-               {{ $message }}
-            @enderror
-        </div>
-        </div>
-
-        <div class="mb-3">
-            <label class="form-label">Jumlah bantuan</label>
-            <input type="number" name="bantuan" class="form-control">
-            <div class="text-danger">
-                @error('bantuan')
-                   {{ $message }}
-                @enderror
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Penghasilan</label>
-            <input type="number" name="penghasilan" class="form-control">
-            <div class="text-danger">
-                @error('penghasilan')
-                   {{ $message }}
-                @enderror
-            </div>
-          </div>
-
-          <div class="mb-3">
-            <label class="form-label">Beban Keluarga</label>
-            <input type="number" name="keluarga" class="form-control">
-            <div class="text-danger">
-                @error('keluarga')
-                   {{ $message }}
-                @enderror
-            </div>
-          </div>
-        
-        <button type="submit" class="btn btn-primary">Submit</button>
-    </form>
-
-
- </div>
     {{-- Table --}}
     <div class="card shadow mb-4">
         <div class="card-header py-3">
-            <h6 class="m-0 font-weight-bold text-primary">Rekomendasi BLT</h6>
+            <h6 class="m-0 font-weight-bold text-primary">Data Nilai</h6>
         </div>
         <div class="card-body">
             <a href="" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#mymodal">
@@ -94,7 +45,8 @@
                             <td>{{ $data->penghasilan }}</td>
                             <td>{{ $data->keluarga }}</td>
                             <td>
-                              <button type="button" class="btn btn-danger">Hapus</button>
+                              <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal2{{ $data->id_nilai }}">Edit</button>
+                              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger{{ $data->id_nilai }}">Hapus</button>
                             </td>
                         </tr>
                         @endforeach   
@@ -165,7 +117,7 @@
             </div>
             <div class="modal-footer justify-content-between">
               <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-              <button type="submit" class="btn btn-primary">Save changes</button>
+              <button type="submit" class="btn btn-primary" >Save changes</button>
             </div>
         </form>
           </div>
@@ -175,6 +127,114 @@
       </div>
 
       {{-- //Modal tambah  --}}
+
+            {{-- Modal edit --}}
+            @foreach($penilaian as $data)
+            <div class="modal fade" id="myModal2{{ $data->id_nilai }}">
+              <div class="modal-dialog">
+                <div class="modal-content">
+                  <div class="modal-header">
+                    <h4 class="modal-title">Ubah nilai</h4>
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                      <span aria-hidden="true">&times;</span>
+                    </button>
+                  </div>
+                  <div class="modal-body">
+                      <form action="/penilaian/update/{{ $data->id_nilai }}" method="POST">
+                          @csrf
+                          <div class="mb-3">
+                            <label class="form-label">Nomor Induk Keluarga</label>
+                            <input id="nikForm" type="number" name="nik" class="form-control" value="{{ $data->nik }}" readonly>
+                            <div class="text-danger">
+                              @error('nik')
+                                 {{ $message }}
+                              @enderror
+                          </div>
+                          </div>
+                  
+                          <div class="mb-3">
+                            <label class="form-label">Nama</label>
+                            <input type="text" name="nama" class="form-control" value="{{ $data->nama }}" readonly>
+                            <div class="text-danger">
+                                @error('nama')
+                                   {{ $message }}
+                                @enderror
+                            </div>
+                          </div>
+                  
+                          <div class="mb-3">
+                              <label class="form-label">Jumlah bantuan</label>
+                              <input type="number" name="bantuan" class="form-control" value="{{ $data->bantuan }}" placeholder="Bantuan">
+                              <div class="text-danger">
+                                  @error('bantuan')
+                                     {{ $message }}
+                                  @enderror
+                              </div>
+                            </div>
+                  
+                            <div class="mb-3">
+                              <label class="form-label">Penghasilan</label>
+                              <input type="number" name="penghasilan" class="form-control" value="{{ $data->penghasilan }}" placeholder="Penghasilan">
+                              <div class="text-danger">
+                                  @error('penghasilan')
+                                     {{ $message }}
+                                  @enderror
+                              </div>
+                            </div>
+                  
+                            <div class="mb-3">
+                              <label class="form-label">Beban Keluarga</label>
+                              <input type="number" name="keluarga" class="form-control" value="{{ $data->keluarga }}" placeholder="keluarga">
+                              <div class="text-danger">
+                                  @error('keluarga')
+                                     {{ $message }}
+                                  @enderror
+                              </div>
+                            </div>
+      
+                      
+                  </div>
+                  <div class="modal-footer justify-content-between">
+                    <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+                    <button type="submit" class="btn btn-primary">Save changes</button>
+                  </div>
+              </form>
+                </div>
+                <!-- /.modal-content -->
+              </div>
+              <!-- /.modal-dialog -->
+            </div>
+            @endforeach
+            {{-- //Modal edit  --}}
+
+            
+{{-- Modal hapus nilai --}}
+@foreach ($penilaian as $data )
+<div class="modal fade" id="modal-danger{{ $data->id_nilai }}">
+  <div class="modal-dialog">
+    <div class="modal-content bg-danger">
+      <div class="modal-header">
+        <h4 class="modal-title">Menghapus Data</h4>
+        <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+          <span aria-hidden="true">&times;</span>
+        </button>
+      </div>
+      <div class="modal-body">
+        <p>Apakah anda yakin ingin menghapus Penilaian dari NIK "{{ $data->nik }}({{ $data->nama }})" ?</p>
+      </div>
+      <div class="modal-footer justify-content-between">
+        <button type="button" class="btn btn-outline-light" data-dismiss="modal">TIDAK</button>
+        <a href="/penilaian/delete/{{ $data->id_nilai }}" class="btn btn-outline-light">YA</a>
+      </div>
+    </div>
+    <!-- /.modal-content -->
+  </div>
+  <!-- /.modal-dialog -->
+</div>
+<!-- /.modal -->
+@endforeach
+{{-- //modal hapus nilai --}}
+
 @endsection
 
 
