@@ -57,10 +57,11 @@ class WargaController extends Controller
             'dusun' => Request()->dusun,
             'rt' => Request()->rt,
             'rw' => Request()->rw,
+            'id' => Request()->id,
         ];
 
         $this->WargaModel->addData($data);
-        return redirect()->route('warga');
+        return redirect()->route('warga')->with('pesan', 'Data berhasil ditambahkan');
     }
 
     public function update($id_warga)

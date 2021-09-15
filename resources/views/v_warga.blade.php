@@ -1,6 +1,15 @@
 @extends('layout.v_template')
 
 @section('content')
+
+@if (session('pesan'))
+<div class="alert alert-info alert-dismissible">
+    <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <h5><i class="icon fa fa-check"></i>Sukses</h5>
+    {{ session('pesan') }}
+  </div>
+    
+@endif
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Data Warga</h6>
@@ -76,12 +85,15 @@
                   </div>
                   <div class="form-group">
                     <label>RW</label>
-                    <input type="number" name="rw" class="form-control" value="{{ old('rw') }}" placeholder="rw">
+                    <input type="number" name="rw" class="form-control" value="{{ old('rw') }}" placeholder="RW">
                     <div class="text-danger">
                       @error('rw')
                          {{ $message }}
                       @enderror
                   </div>
+                  </div>
+                  <div class="form-group">
+                    <input type="hidden" name="id" value="{{ Auth::user()->id }}" class="form-control">
                   </div>
                 </div>
                 <!-- /.card-body -->
@@ -89,8 +101,8 @@
               
               </div>
               <div class="modal-footer justify-content-between">
-                <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-                <button type="submit" class="btn btn-primary">Save changes</button>
+                {{-- <button type="button" class="btn btn-default" data-dismiss="modal">Close</button --}}
+                <button type="submit" class="btn btn-primary">Simpan</button>
               </div>
             </form>
             </div>
@@ -244,13 +256,13 @@
        <div class="modal-dialog">
          <div class="modal-content bg-danger">
            <div class="modal-header">
-             <h4 class="modal-title">Menghapus Data</h4>
+             <h4 style="color: whitesmoke;" class="modal-title">Menghapus Data</h4>
              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
                <span aria-hidden="true">&times;</span>
              </button>
            </div>
            <div class="modal-body">
-             <p>Apakah anda yakin ingin menghapus data dari NIK "{{ $data->nik }}({{ $data->nama }})" ?</p>
+             <p style="color: whitesmoke;">Apakah anda yakin ingin menghapus data dari NIK "{{ $data->nik }}({{ $data->nama }})" ?</p>
            </div>
            <div class="modal-footer justify-content-between">
              <button type="button" class="btn btn-outline-light" data-dismiss="modal">TIDAK</button>

@@ -5,7 +5,7 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">SB Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">Admin <sup>2</sup></div>
     </a>
 
     <!-- Divider -->
@@ -23,7 +23,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Interface
+        DATA
     </div>
 
  <!-- Nav Item - Data Warga -->
@@ -60,7 +60,7 @@
 
     <!-- Heading -->
     <div class="sidebar-heading">
-        Addons
+        HASIL
     </div>
     <!-- Nav Item - Rekomendasi -->
     <li class="{{ request()->is('rekomendasi') ? 'nav-item active' : 'nav-item' }}">

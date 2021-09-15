@@ -67,6 +67,7 @@ class PenilaianController extends Controller
             'tidak_layak' => $result['nilaiTidakLayak'],
             'layak' => $result['nilaiLayak'],
             'blt' => $result['blt'],
+            'id' => Request()->id,
         ];
 
 

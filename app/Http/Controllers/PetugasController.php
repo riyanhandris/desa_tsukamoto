@@ -44,7 +44,7 @@ class PetugasController extends Controller
         ];
 
         $this->PetugasModel->addData($data);
-        return redirect()->route('petugas');
+        return redirect()->route('petugas')->with('pesan', 'Data berhasil ditambahkan');
     }
 
     public function update($id)

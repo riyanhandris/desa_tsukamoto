@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class PenilaianModel extends Model
@@ -12,7 +13,9 @@ class PenilaianModel extends Model
 
     public function allData()
     {
-        return DB::table('nilai')->get();
+        return DB::table('nilai')
+            ->where('id', '=',  Auth::user()->id)
+            ->get();
     }
 
     public function addData($data)

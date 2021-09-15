@@ -86,18 +86,18 @@
                                     <i class="fas fa-user fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Profile
                                 </a>
-                                <a class="dropdown-item" href="#">
+                                {{-- <a class="dropdown-item" href="#">
                                     <i class="fas fa-cogs fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Settings
                                 </a>
                                 <a class="dropdown-item" href="#">
                                     <i class="fas fa-list fa-sm fa-fw mr-2 text-gray-400"></i>
                                     Activity Log
-                                </a>
+                                </a> --}}
                                 <div class="dropdown-divider"></div>
                                 <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">
                                     <i class="fas fa-sign-out-alt fa-sm fa-fw mr-2 text-gray-400"></i>
-                                    Logout
+                                    Keluar
                                 </a>
                             </div>
                         </li>
@@ -134,19 +134,19 @@
         <div class="modal-dialog" role="document">
             <div class="modal-content">
                 <div class="modal-header">
-                    <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
+                    <h5 class="modal-title" id="exampleModalLabel">Apakah yakin ingin keluar ?</h5>
                     <button class="close" type="button" data-dismiss="modal" aria-label="Close">
                         <span aria-hidden="true">×</span>
                     </button>
                 </div>
-                <div class="modal-body">Apakah anda yakin ingin keluar ?</div>
+                <div class="modal-body">Silahkan pilih "Keluar" jika ingin meninggalkan laman ini </div>
                 <style>a.block.pl-3.pr-4.py-2.border-l-4.border-transparent.text-base.font-medium.text-gray-600.hover\:text-gray-800.hover\:bg-gray-50.hover\:border-gray-300.focus\:outline-none.focus\:text-gray-800.focus\:bg-gray-50.focus\:border-gray-300.transition.duration-150.ease-in-out {
                     background: #4e73df;
                     color: #fff!important;
                     border-radius: .35rem;
                 }</style>
                 <div class="modal-footer">
-                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
+                    <button class="btn btn-secondary" type="button" data-dismiss="modal">Batal</button>
                     {{-- <a class="btn btn-primary" href=""> --}}
                         <form method="POST" action="{{ route('logout') }}">
                         @csrf
@@ -154,7 +154,7 @@
                         <x-responsive-nav-link :href="route('logout')"
                                 onclick="event.preventDefault();
                                             this.closest('form').submit();">
-                            {{ __('Log Out') }}
+                            {{ __('Keluar') }} 
                         </x-responsive-nav-link>
                     </form>
                     

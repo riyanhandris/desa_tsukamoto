@@ -4,6 +4,7 @@ namespace App\Models;
 
 use Illuminate\Database\Eloquent\Factories\HasFactory;
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 
 class WargaModel extends Model
@@ -12,7 +13,9 @@ class WargaModel extends Model
 
     public function allData()
     {
-        return DB::table('warga')->get();
+        return DB::table('warga')
+            ->where('id', '=',  Auth::user()->id)
+            ->get();
     }
 
     public function detailData($id_warga)
