@@ -67,7 +67,7 @@ class PetugasController extends Controller
         ];
 
         $this->PetugasModel->editData($id, $data);
-        return redirect()->route('petugas');
+        return redirect()->route('petugas')->with('pesan2', 'Data berhasil diubah');
     }
 
     public function delete($id)

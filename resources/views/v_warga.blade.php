@@ -5,22 +5,32 @@
 @if (session('pesan'))
 <div class="alert alert-info alert-dismissible">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <h5><i class="icon fa fa-check"></i>Sukses</h5>
+    <h5><i class="icon fa fa-check"></i><br>Sukses</h5>
     {{ session('pesan') }}
   </div>
     
 @endif
 
 @if ($errors->any())
-<div class="alert alert-info alert-dismissible">
+<div class="alert alert-danger alert-dismissible">
   <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-  <h5><i class="icon fa fa-check"></i>Gagal</h5>
+  <h5><i class="icon fas fa-exclamation-triangle"></i><br>Data gagal dimasukkan</h5>
+  <p>Coba periksa data yang anda masukkan</p>
   {{-- <ul>
     @foreach ($errors->all() as $item)
         <li>{{ $item }}</li>
     @endforeach
   </ul> --}}
 </div>
+@endif
+
+@if (session('pesan2'))
+<div class="alert alert-warning alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <h5><i class="icon fa fa-check"></i><br>Berhasil</h5>
+  {{ session('pesan2') }}
+</div>
+    
 @endif
 
 <div class="card shadow mb-4">
@@ -50,11 +60,11 @@
                   <div class="form-group">
                       <label>NIK</label>
                       <input type="number" name="nik" class="form-control" value="{{ old('nik') }}" placeholder="NIK">
-                      {{-- <div class="text-danger">
+                      <div class="text-danger">
                           @error('nik')
                              {{ $message }}
                           @enderror
-                      </div> --}}
+                      </div>
                     </div>
                   <div class="form-group">
                     <label>Nama</label>

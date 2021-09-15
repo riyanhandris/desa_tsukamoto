@@ -6,9 +6,31 @@
 @if (session('pesan'))
 <div class="alert alert-info alert-dismissible">
     <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
-    <h5><i class="icon fa fa-check"></i>Sukses</h5>
+    <h5><i class="icon fa fa-check"></i><br>Sukses</h5>
     {{ session('pesan') }}
   </div>
+    
+@endif
+
+@if ($errors->any())
+<div class="alert alert-danger alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <h5><i class="icon fas fa-exclamation-triangle"></i><br>Data gagal dimasukkan</h5>
+  <p>Coba periksa data yang anda masukkan</p>
+  {{-- <ul>
+    @foreach ($errors->all() as $item)
+        <li>{{ $item }}</li>
+    @endforeach
+  </ul> --}}
+</div>
+@endif
+
+@if (session('pesan2'))
+<div class="alert alert-warning alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <h5><i class="icon fa fa-check"></i><br>Berhasil</h5>
+  {{ session('pesan2') }}
+</div>
     
 @endif
 

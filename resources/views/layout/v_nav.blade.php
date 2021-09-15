@@ -61,21 +61,23 @@
     <!-- Divider -->
     <hr class="sidebar-divider">
 
-    <!-- Heading -->
-    <div class="sidebar-heading">
+   
+    @if (Auth()->user()->id==2)
+     <!-- Heading -->
+     <div class="sidebar-heading">
         HASIL
     </div>
     <!-- Nav Item - Rekomendasi -->
-    @if (Auth()->user()->id==2)
     <li class="{{ request()->is('rekomendasi') ? 'nav-item active' : 'nav-item' }}">
         <a class="nav-link" href="{{ route('rekomendasi') }}">
         <i class="fa fa-book nav-icon"></i>
         <span>Rekomendasi</span></a>
     </li>
-    @endif
     
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
+    @endif
+    
 
     <!-- Sidebar Toggler (Sidebar) -->
     <div class="text-center d-none d-md-inline">

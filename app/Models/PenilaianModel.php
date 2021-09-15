@@ -13,9 +13,14 @@ class PenilaianModel extends Model
 
     public function allData()
     {
-        return DB::table('nilai')
-            ->where('id', '=',  Auth::user()->id)
-            ->get();
+        if (Auth::user()->id == 2) {
+            return DB::table('nilai')
+                ->get();
+        } else {
+            return DB::table('nilai')
+                ->where('id', '=',  Auth::user()->id)
+                ->get();
+        }
     }
 
     public function addData($data)

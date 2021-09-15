@@ -93,7 +93,7 @@ class WargaController extends Controller
         ];
 
         $this->WargaModel->editData($id_warga, $data);
-        return redirect()->route('warga');
+        return redirect()->route('warga')->with('pesan2', 'Data berhasil diubah');
     }
 
     public function delete($id_warga)

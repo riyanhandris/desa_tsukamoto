@@ -18,13 +18,20 @@ class RekomendasiController extends Controller
     public function index()
     {
 
-        // return $this->RekomendasiModel->allData();
+        if (Auth::user()->id == '2') {
+            $data = DB::table('nilai')
+                ->join('warga', 'nilai.nik', '=', 'warga.nik')
+                ->orderBy('nilai.hasil_z', 'desc')
+                ->get();
+        } else {
+            $data = DB::table('nilai')
+                ->join('warga', 'nilai.nik', '=', 'warga.nik')
+                ->orderBy('nilai.hasil_z', 'desc')
+                ->where('nilai.id', '=',  Auth::user()->id)
+                ->get();
+        }
 
-        $data = DB::table('nilai')
-            ->join('warga', 'nilai.nik', '=', 'warga.nik')
-            ->orderBy('nilai.hasil_z', 'desc')
-            ->where('nilai.id', '=',  Auth::user()->id)
-            ->get();
+
         // $data = [
         //     'rekomendasi' => $this->RekomendasiModel->allData(),
         // ];

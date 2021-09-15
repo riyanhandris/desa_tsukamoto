@@ -106,7 +106,7 @@ class PenilaianController extends Controller
             'blt' => $result['blt'],
         ];
         $this->PenilaianModel->editData($id_nilai, $data);
-        return redirect()->route('nilai');
+        return redirect()->route('nilai')->with('pesan2', 'Data berhasil diubah');
     }
 
     public function delete($id_nilai)

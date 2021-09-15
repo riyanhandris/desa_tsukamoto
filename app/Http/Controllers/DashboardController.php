@@ -20,22 +20,22 @@ class DashboardController extends Controller
     {
         if (Auth()->user()->id == 2) {
             $data = DB::table('warga')->count();
-            $blt_layak = DB::table('nilai')
+            $sudah_nilai = DB::table('nilai')
                 ->join('warga', 'nilai.nik', '=', 'warga.nik')
                 ->count();
 
-            return view('v_dashboard', compact('data', 'blt_layak'));
+            return view('v_dashboard', compact('data', 'sudah_nilai'));
         } else {
             $data = DB::table('warga')
                 ->where('id', Auth()->user()->id)
                 ->count();
 
-            $blt_layak = DB::table('nilai')
+            $sudah_nilai = DB::table('nilai')
                 ->join('warga', 'nilai.nik', '=', 'warga.nik')
                 ->where('nilai.id', Auth()->user()->id)
                 ->count();
 
-            return view('v_dashboard', compact('data', 'blt_layak'));
+            return view('v_dashboard', compact('data', 'sudah_nilai'));
         }
     }
 }
