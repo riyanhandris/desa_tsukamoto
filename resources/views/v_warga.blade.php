@@ -10,6 +10,19 @@
   </div>
     
 @endif
+
+@if ($errors->any())
+<div class="alert alert-info alert-dismissible">
+  <button type="button" class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+  <h5><i class="icon fa fa-check"></i>Gagal</h5>
+  {{-- <ul>
+    @foreach ($errors->all() as $item)
+        <li>{{ $item }}</li>
+    @endforeach
+  </ul> --}}
+</div>
+@endif
+
 <div class="card shadow mb-4">
     <div class="card-header py-3">
         <h6 class="m-0 font-weight-bold text-primary">Data Warga</h6>
@@ -37,11 +50,11 @@
                   <div class="form-group">
                       <label>NIK</label>
                       <input type="number" name="nik" class="form-control" value="{{ old('nik') }}" placeholder="NIK">
-                      <div class="text-danger">
+                      {{-- <div class="text-danger">
                           @error('nik')
                              {{ $message }}
                           @enderror
-                      </div>
+                      </div> --}}
                     </div>
                   <div class="form-group">
                     <label>Nama</label>

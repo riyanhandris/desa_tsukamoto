@@ -7,6 +7,7 @@ use App\Http\Controllers\PetugasController;
 use App\Http\Controllers\RekomendasiController;
 use App\Http\Controllers\WargaController;
 use App\Http\Controllers\DashboardController;
+use Illuminate\Routing\RouteGroup;
 
 /*
 |--------------------------------------------------------------------------
@@ -24,17 +25,13 @@ Route::get('/', function () {
         ->route('login');
 });
 
-Route::get('/dashboard', function () {
-    return view('v_dashboard');
-})->middleware(['auth'])->name('dashboard');
+Route::get('/dashboard', [DashboardController::class, 'index'])->middleware(['auth'])->name('dashboard');
 
 Route::group(['middleware' => 'auth'], function () {
     Route::get('/warga', [WargaController::class, 'index'])->name('warga');
 });
 Route::get('/kriteria', [KriteriaController::class, 'index'])->name('kriteria');
 Route::get('/penilaian', [PenilaianController::class, 'index'])->name('nilai');
-Route::get('/petugas', [PetugasController::class, 'index'])->name('petugas');
-Route::get('/rekomendasi', [RekomendasiController::class, 'index'])->name('rekomendasi');
 
 Route::get('/warga/detail/{id_warga}', [WargaController::class, 'detail']);
 Route::get('/penilaian/findNIK', [PenilaianController::class, 'findNIK'])->name('penilaian.findNIK');
@@ -50,4 +47,11 @@ Route::get('/warga/delete/{id_warga}', [WargaController::class, 'delete']);
 Route::get('/petugas/delete/{id}', [PetugasController::class, 'delete']);
 Route::get('/penilaian/delete/{id_nilai}', [PenilaianController::class, 'delete']);
 
+Route::get('/print', [RekomendasiController::class, 'print'])->name('print');
 require __DIR__ . '/auth.php';
+
+Route::middleware('admin')->group(function () {
+
+    Route::get('/petugas', [PetugasController::class, 'index'])->name('petugas');
+    Route::get('/rekomendasi', [RekomendasiController::class, 'index'])->name('rekomendasi');
+});

@@ -18,9 +18,24 @@ class DashboardController extends Controller
 
     public function index()
     {
+        if (Auth()->user()->id == 2) {
+            $data = DB::table('warga')->count();
+            $blt_layak = DB::table('nilai')
+                ->join('warga', 'nilai.nik', '=', 'warga.nik')
+                ->count();
 
-        $data = DB::table('warga')->count();
+            return view('v_dashboard', compact('data', 'blt_layak'));
+        } else {
+            $data = DB::table('warga')
+                ->where('id', Auth()->user()->id)
+                ->count();
 
-        return view('v_dashboard', compact('data'));
+            $blt_layak = DB::table('nilai')
+                ->join('warga', 'nilai.nik', '=', 'warga.nik')
+                ->where('nilai.id', Auth()->user()->id)
+                ->count();
+
+            return view('v_dashboard', compact('data', 'blt_layak'));
+        }
     }
 }

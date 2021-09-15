@@ -13,9 +13,14 @@ class WargaModel extends Model
 
     public function allData()
     {
-        return DB::table('warga')
-            ->where('id', '=',  Auth::user()->id)
-            ->get();
+        if (Auth::user()->id == 2) {
+            return DB::table('warga')
+                ->get();
+        } else {
+            return DB::table('warga')
+                ->where('id', '=',  Auth::user()->id)
+                ->get();
+        }
     }
 
     public function detailData($id_warga)

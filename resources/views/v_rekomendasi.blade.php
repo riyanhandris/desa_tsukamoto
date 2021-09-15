@@ -9,6 +9,8 @@
   </div>
   <div class="card-body">
         
+    <a href="{{ route('print') }}" class="btn btn-primary" target="blank">Print<i class="fas fa-print"></i></a>
+    <br><br>
       <div class="table-responsive">
           <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
               <thead>

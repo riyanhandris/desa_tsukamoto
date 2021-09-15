@@ -42,7 +42,7 @@
                             <td>{{ $data->nik }}</td>
                             <td>{{ $data->nama }}</td>
                             <td>{{ $data->bantuan }}</td>
-                            <td>Rp. {{ $data->penghasilan*1000 }}</td>
+                            <td>Rp. {{ $data->penghasilan }}</td>
                             <td>{{ $data->keluarga }}</td>
                             <td>
                               <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal2{{ $data->id_nilai }}">Edit</button>

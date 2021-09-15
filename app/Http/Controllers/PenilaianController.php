@@ -121,9 +121,9 @@ class PenilaianController extends Controller
         $bantuan[1] = $this->bantuanKadangDapat($request->bantuan);
         $bantuan[2] = $this->bantuanSeringDapat($request->bantuan);
 
-        $penghasilan[0] = $this->penghasilanSedikit($request->penghasilan);
-        $penghasilan[1] = $this->penghasilanSedang($request->penghasilan);
-        $penghasilan[2] = $this->penghasilanBanyak($request->penghasilan);
+        $penghasilan[0] = $this->penghasilanSedikit($request->penghasilan / 1000);
+        $penghasilan[1] = $this->penghasilanSedang($request->penghasilan / 1000);
+        $penghasilan[2] = $this->penghasilanBanyak($request->penghasilan / 1000);
 
         $keluarga[0] = $this->keluargaSedikit($request->keluarga);
         $keluarga[1] = $this->keluargaSedang($request->keluarga);

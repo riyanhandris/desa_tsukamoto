@@ -5,14 +5,14 @@
         <div class="sidebar-brand-icon rotate-n-15">
             <i class="fas fa-laugh-wink"></i>
         </div>
-        <div class="sidebar-brand-text mx-3">Admin <sup>2</sup></div>
+        <div class="sidebar-brand-text mx-3">Sistem <sup>Rekomendasi</sup></div>
     </a>
 
     <!-- Divider -->
     <hr class="sidebar-divider my-0">
 
     <!-- Nav Item - Dashboard -->
-    <li class="{{ request()->is('/') ? 'nav-item active' : 'nav-item' }}">
+    <li class="{{ request()->is('dashboard') ? 'nav-item active' : 'nav-item' }}">
         <a href="/dashboard" class="nav-link">
             <i class="fas fa-fw fa-tachometer-alt"></i>
             <span>Dashboard</span></a>
@@ -41,11 +41,14 @@
 </li>
 
 <!-- Nav Item - Data Petugas -->
+@if (Auth()->user()->id==2)
 <li class="{{ request()->is('petugas') ? 'nav-item active' : 'nav-item' }}">
     <a class="nav-link" href="{{ route('petugas') }}">
         <i class="fas fa-chalkboard-teacher nav-icon"></i>
         <span>Data Petugas</span></a>
-</li>
+</li>    
+@endif
+
 
 <!-- Nav Item - Penilaian -->
 <li class="{{ request()->is('penilaian') ? 'nav-item active' : 'nav-item' }}">
@@ -63,11 +66,14 @@
         HASIL
     </div>
     <!-- Nav Item - Rekomendasi -->
+    @if (Auth()->user()->id==2)
     <li class="{{ request()->is('rekomendasi') ? 'nav-item active' : 'nav-item' }}">
         <a class="nav-link" href="{{ route('rekomendasi') }}">
         <i class="fa fa-book nav-icon"></i>
         <span>Rekomendasi</span></a>
     </li>
+    @endif
+    
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
 

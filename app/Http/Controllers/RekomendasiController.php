@@ -30,4 +30,17 @@ class RekomendasiController extends Controller
         // ];
         return view('v_rekomendasi', compact('data'));
     }
+
+    public function print()
+    {
+        $data = DB::table('nilai')
+            ->join('warga', 'nilai.nik', '=', 'warga.nik')
+            ->orderBy('nilai.hasil_z', 'desc')
+            // ->where('nilai.id', '=',  Auth::user()->id)
+            ->get();
+        // $data = [
+        //     'rekomendasi' => $this->RekomendasiModel->allData(),
+        // ];
+        return view('v_print', compact('data'));
+    }
 }
