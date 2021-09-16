@@ -62,7 +62,6 @@
     <hr class="sidebar-divider">
 
    
-    @if (Auth()->user()->id==2)
      <!-- Heading -->
      <div class="sidebar-heading">
         HASIL
@@ -76,7 +75,6 @@
     
     <!-- Divider -->
     <hr class="sidebar-divider d-none d-md-block">
-    @endif
     
 
     <!-- Sidebar Toggler (Sidebar) -->

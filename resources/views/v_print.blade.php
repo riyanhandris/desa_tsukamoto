@@ -14,7 +14,9 @@
 </head>
 <body>
     <div class="form-group">
-        <p align="center"><b>Data Rekomendasi</b></p>
+        <h4 align="center"><b>Laporan Rekapitulasi</b></h4>
+        <h5 align="center"><b>Sistem Rekomendasi BLT</b></h5>
+        <h5 align="center"><b>Desa Curahnongko</b></h5><br>
         <table class="table table-striped">
             <thead>
                 <tr>

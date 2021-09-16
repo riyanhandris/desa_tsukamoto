@@ -38,7 +38,7 @@
     <div class="card-body">
         <a href="" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#myModal">
             <span class="icon text-white-50">
-                <i class="fas fa-plus"></i>
+              <i class="fas fa-user-plus"></i>
             </span>
             <span class="text">Tambah</span>
         </a><br><br>
@@ -132,8 +132,8 @@
                         <td>{{ $data->nik }}</td>
                         <td>{{ $data->name }}</td>
                         <td>{{ $data->jk }}</td>
-                        <td> <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal2{{ $data->id }}">Edit</button>
-                          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger{{ $data->id }}">Hapus</button>
+                        <td> <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal2{{ $data->id }}"><i class="fas fa-edit"></i>Edit</button>
+                          <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger{{ $data->id }}"><i class="far fa-trash-alt"></i>Hapus</button>
                   </td>
                     </tr>
                     @endforeach

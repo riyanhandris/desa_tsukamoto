@@ -40,7 +40,7 @@
     <div class="card-body">
         <a href="" class="btn btn-primary btn-icon-split" data-toggle="modal" data-target="#mymodal">
             <span class="icon text-white-50">
-                <i class="fas fa-plus"></i>
+              <i class="fas fa-user-plus"></i>
             </span>
             <span class="text">Tambah</span>
         </a><br><br>
@@ -160,9 +160,10 @@
                         <td>{{ $data->rt }}</td>
                         <td>{{ $data->rw }}</td>
                         {{-- <td>Petugas</td> --}}
-                        <td><a href="/warga/detail/{{ $data->id_warga }}" class="btn btn-sm btn-success">Detail</a>
-                            <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal2{{ $data->id_warga }}">Edit</button>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger{{ $data->id_warga }}">Hapus</button>
+                        <td>
+                          {{-- <a href="/warga/detail/{{ $data->id_warga }}" class="btn btn-sm btn-success">Detail</a> --}}
+                            <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal2{{ $data->id_warga }}"><i class="fas fa-edit"></i>Edit</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger{{ $data->id_warga }}"><i class="far fa-trash-alt"></i>Hapus</button>
                         </td>
                     </tr>
                     @endforeach

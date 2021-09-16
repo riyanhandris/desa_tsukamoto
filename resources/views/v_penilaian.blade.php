@@ -67,8 +67,8 @@
                             <td>Rp. {{ $data->penghasilan }}</td>
                             <td>{{ $data->keluarga }}</td>
                             <td>
-                              <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal2{{ $data->id_nilai }}">Edit</button>
-                              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger{{ $data->id_nilai }}">Hapus</button>
+                              <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal2{{ $data->id_nilai }}"><i class="fas fa-edit"></i>Edit</button>
+                              <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger{{ $data->id_nilai }}"><i class="far fa-trash-alt"></i>Hapus</button>
                             </td>
                         </tr>
                         @endforeach   

@@ -32,6 +32,7 @@ Route::group(['middleware' => 'auth'], function () {
 });
 Route::get('/kriteria', [KriteriaController::class, 'index'])->name('kriteria');
 Route::get('/penilaian', [PenilaianController::class, 'index'])->name('nilai');
+Route::get('/rekomendasi', [RekomendasiController::class, 'index'])->name('rekomendasi');
 
 Route::get('/warga/detail/{id_warga}', [WargaController::class, 'detail']);
 Route::get('/penilaian/findNIK', [PenilaianController::class, 'findNIK'])->name('penilaian.findNIK');
@@ -53,5 +54,4 @@ require __DIR__ . '/auth.php';
 Route::middleware('admin')->group(function () {
 
     Route::get('/petugas', [PetugasController::class, 'index'])->name('petugas');
-    Route::get('/rekomendasi', [RekomendasiController::class, 'index'])->name('rekomendasi');
 });
