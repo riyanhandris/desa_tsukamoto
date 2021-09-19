@@ -50,6 +50,7 @@
                 <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                     <thead>
                         <tr>
+                            <th>No.</th>
                             <th>NIK</th>
                             <th>Nama</th>
                             <th>Bantuan</th>
@@ -61,6 +62,7 @@
                     <tbody>
                         @foreach ($penilaian as $data )
                         <tr>
+                            <td>{{ $loop->iteration }}</td>
                             <td>{{ $data->nik }}</td>
                             <td>{{ $data->nama }}</td>
                             <td>{{ $data->bantuan }}</td>

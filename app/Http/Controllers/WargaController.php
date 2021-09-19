@@ -96,9 +96,9 @@ class WargaController extends Controller
         return redirect()->route('warga')->with('pesan2', 'Data berhasil diubah');
     }
 
-    public function delete($id_warga)
+    public function delete($nik)
     {
-        $this->WargaModel->deleteData($id_warga);
+        $this->WargaModel->deleteData($nik);
         return redirect()->route('warga');
     }
 }

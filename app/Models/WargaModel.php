@@ -15,10 +15,12 @@ class WargaModel extends Model
     {
         if (Auth::user()->id == 2) {
             return DB::table('warga')
+                ->orderBy('id_warga', 'desc')
                 ->get();
         } else {
             return DB::table('warga')
                 ->where('id', '=',  Auth::user()->id)
+                ->orderBy('id_warga', 'desc')
                 ->get();
         }
     }
@@ -39,10 +41,14 @@ class WargaModel extends Model
             ->update($data);
     }
 
-    public function deleteData($id_warga)
+    public function deleteData($nik)
     {
         DB::table('warga')
-            ->where('id_warga', $id_warga)
+            ->where('nik', $nik)
+            ->delete();
+
+        DB::table('nilai')
+            ->where('nik', $nik)
             ->delete();
     }
 }

@@ -15,10 +15,12 @@ class PenilaianModel extends Model
     {
         if (Auth::user()->id == 2) {
             return DB::table('nilai')
+                ->orderBy('id_nilai', 'desc')
                 ->get();
         } else {
             return DB::table('nilai')
                 ->where('id', '=',  Auth::user()->id)
+                ->orderBy('id_nilai', 'desc')
                 ->get();
         }
     }

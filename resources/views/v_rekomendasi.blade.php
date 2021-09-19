@@ -24,6 +24,8 @@
                       <th>RW</th>
                       <th>BLT</th>
                       <th>Hasil z</th>
+                      {{-- <th>layak</th> --}}
+                      {{-- <th>tidak layak</th> --}}
                   </tr>
               </thead>
               <tbody>
@@ -38,6 +40,8 @@
                       <td>{{ $var->rw }}</td>
                       <td>{{ $var->blt }}</td>
                       <td>{{ $var->hasil_z }}</td>
+                      {{-- <td>{{ $var->layak }}</td> --}}
+                      {{-- <td>{{ $var->tidak_layak }}</td> --}}
                   </tr>
                   @endforeach
               </tbody>

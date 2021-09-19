@@ -140,6 +140,7 @@
             <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
                 <thead>
                     <tr>
+                        <th>No.</th>
                         <th>NIK</th>
                         <th>Nama</th>
                         <th>Jenis Kelamin</th>
@@ -153,6 +154,7 @@
                 <tbody>
                     @foreach ($warga as $data )
                     <tr>
+                        <td>{{ $loop->iteration }}</td>
                         <td>{{ $data->nik }}</td>
                         <td>{{ $data->nama }}</td>
                         <td>{{ $data->jk }}</td>
@@ -163,7 +165,7 @@
                         <td>
                           {{-- <a href="/warga/detail/{{ $data->id_warga }}" class="btn btn-sm btn-success">Detail</a> --}}
                             <button type="button" class="btn btn-sm btn-warning" data-toggle="modal" data-target="#myModal2{{ $data->id_warga }}"><i class="fas fa-edit"></i>Edit</button>
-                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger{{ $data->id_warga }}"><i class="far fa-trash-alt"></i>Hapus</button>
+                            <button type="button" class="btn btn-danger" data-toggle="modal" data-target="#modal-danger{{ $data->nik }}"><i class="far fa-trash-alt"></i>Hapus</button>
                         </td>
                     </tr>
                     @endforeach
@@ -276,7 +278,7 @@
      @endforeach
 
      @foreach ($warga as $data )
-     <div class="modal fade" id="modal-danger{{ $data->id_warga }}">
+     <div class="modal fade" id="modal-danger{{ $data->nik }}">
        <div class="modal-dialog">
          <div class="modal-content bg-danger">
            <div class="modal-header">
@@ -290,7 +292,7 @@
            </div>
            <div class="modal-footer justify-content-between">
              <button type="button" class="btn btn-outline-light" data-dismiss="modal">TIDAK</button>
-             <a href="/warga/delete/{{ $data->id_warga }}" class="btn btn-outline-light">YA</a>
+             <a href="/warga/delete/{{ $data->nik }}" class="btn btn-outline-light">YA</a>
            </div>
          </div>
          <!-- /.modal-content -->
